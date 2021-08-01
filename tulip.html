@@ -1,6 +1,46 @@
 <canvas id="gameCanvas" width="400" height="400"></canvas>
+<ul id="image-gallery"></ul>
 
 <script>
-const snakeboard = document.getElementById("gameCanvas");
-const snakeboard_ctx = gameCanvas.getContext("2d");
+const canvas = document.getElementById("gameCanvas");
+const ctx = gameCanvas.getContext("2d");
+
+function drawImage(src) {
+  drawing = new Image();
+  drawing.src = src + ".png";
+  drawing.onload = function() {
+     ctx.clearRect(0, 0, canvas.width, canvas.height);
+     ctx.drawImage(drawing,0,0);
+  };
+}
+
+[
+    "Archie-Dominated",
+    "Archie-Forgiven",
+    "Archie-Normal",
+    "Archie-Steel-Dominated",
+    "Archie-Steel-Forgiven",
+    "Archie-Steel-Normal",
+    "Cube-Arch",
+    "Cube-Dominated",
+    "Cube-Forgiven",
+    "Cube-Normal",
+    "Lightfarer-Arch-Domainted",
+    "Lightfarer-Arch-Forgiven",
+    "Lightfarer-Arch-Normal",
+    "Lightfarer-Dominated",
+    "Lightfarer-Forgiven",
+    "Lightfarer-Normal",
+    "Orb-Arch",
+    "Orb-Dominated",
+    "Orb-Forgiven",
+    "Orb-Normal"
+].forEach(function(imageName) {
+  var li = document.createElement("li");
+  var a = document.createElement("a");
+  li.appendChild(a);
+  a.textContent = imageName;
+  a.onclick = function() { drawImage(imageName); };
+  document.getElementById("image-gallery").appendChild(li);
+});
 </script>
