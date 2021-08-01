@@ -41,7 +41,10 @@ function drawImage(src) {
   li.appendChild(a);
   a.textContent = imageName;
   a.href = imageName + ".png";
-  a.onclick = function() { drawImage(imageName); };
+  a.onclick = function() {
+    drawImage(imageName);
+    return false;  // Just do JavaScript onclick, not the normal link
+  };
   document.getElementById("image-gallery").appendChild(li);
 });
 </script>
